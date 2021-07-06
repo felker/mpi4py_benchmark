@@ -17,6 +17,7 @@ def osu_bw(
     comm = MPI.COMM_WORLD
     myid = comm.Get_rank()
     numprocs = comm.Get_size()
+    print(numprocs)
 
     if numprocs != 2:
         if myid == 0:
@@ -33,7 +34,8 @@ def osu_bw(
     if myid == 0:
         print ('# %-8s%20s' % ("Size [B]", "Bandwidth [MB/s]"))
 
-    message_sizes = [2**i for i in range(30)]
+    #message_sizes = [2**i for i in range(30)]
+    message_sizes = [2**i for i in range(15)]
     for size in message_sizes:
         if size > MAX_MSG_SIZE:
             break
